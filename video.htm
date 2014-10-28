@@ -1,0 +1,77 @@
+<html>
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+ 	<title>Welcome !</title>
+	<link rel="stylesheet" type="text/css" href="files/style.css">
+	<script src="files/scripts.js"></script> 
+</head>
+
+<body class="background">
+	<table id="_page" class="page">
+		<tr class="group">
+			<td>
+				<div>
+					<table>
+						<tr>
+							<td>
+								<button id="bt_start" class="myButton" onclick="btStartClick()";>
+									Start
+								</button>
+							</td>
+							<td>
+								<button id="bt_replay" class="myButton" onclick="btReplayClick()";>
+									Replay
+								</button>
+							</td>
+							<td>
+								<button id="bt_toGray" class="myButton" onclick="btReplayClick()";>
+									Gray
+								</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</td>
+		</tr>
+		<tr class="group">
+			<td>
+				<div class="viewZone">
+					<table class="viewZoneBound">
+						<tr>
+							<td class="thumbalVid">
+								<video controls="controls" id="OrginalVid" class="showVideo">
+						  			<source src="files/CountOnMe.mp4" type="video/mp4">
+								</video>
+							</td>
+							<td align="center">
+								<canvas id="cvShowVid" class="showVideo"></canvas>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</td>
+		</tr>
+		<tr class="group">
+			<td>
+				<div>
+					<table>
+						<tr>
+							<td class="thumbalVid">
+								<canvas id="cvGray" class="thumbalVid"></canvas>
+							</td>
+							<td class="thumbalVid">
+								<canvas id="cvGauss" class="thumbalVid"></canvas>
+							</td>
+							<td class="thumbalVid">
+								<canvas id="cvSobel" class="thumbalVid"></canvas>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table>
+</body>
+
+</html>
