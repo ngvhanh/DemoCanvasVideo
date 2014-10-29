@@ -312,7 +312,7 @@ function laplace(orgFrame)
     var width = orgFrame.width;
 
     var length = tempData.length;
-    for(var i = width*4; i < length - width; i++)
+    for(var i = 0; i < length - width; i++)
     {
         var temp = tempData[i-width] + tempData[i-4] - 4*tempData[i] + tempData[i+4] + tempData[i+width+4];
         // Lấy đạo hàm theo 2 chiều
