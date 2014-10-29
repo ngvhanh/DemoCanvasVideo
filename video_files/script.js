@@ -56,7 +56,7 @@ function draw(video, context, width, height, filterType)
     }
     
     //Repeat
-    setTimeout(draw, 20, video, context, width, height, filter); 
+    setTimeout(draw, 40, video, context, width, height, filter); 
 }
 
 //Video processing-------------------------------------------------------------------------------------------------------------------
