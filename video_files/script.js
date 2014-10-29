@@ -119,7 +119,7 @@ function red(orgFrame)
     var resultFrame = orgFrame;
     var tempData = resultFrame.data;
     
-    // Duyệt qua từng pixel và chuyển pixel đó sang dạng grayscale
+    // Duyệt qua từng pixel và cộng thêm vào kênh red
     var length = tempData.length;
     for (var i = 0; i < length; i += 4)
     {                    
@@ -141,7 +141,7 @@ function green(orgFrame)
     var resultFrame = orgFrame;
     var tempData = resultFrame.data;
     
-    // Duyệt qua từng pixel và chuyển pixel đó sang dạng grayscale
+    // Duyệt qua từng pixel và cộng thêm vào kênh green
     var length = tempData.length;
     for (var i = 0; i < length; i += 4)
     {                    
@@ -163,7 +163,7 @@ function blue(orgFrame)
     var resultFrame = orgFrame;
     var tempData = resultFrame.data;
     
-    // Duyệt qua từng pixel và chuyển pixel đó sang dạng grayscale
+    // Duyệt qua từng pixel và cộng thêm vào kênh blue
     var length = tempData.length;
     for (var i = 0; i < length; i += 4)
     {                    
@@ -178,6 +178,28 @@ function blue(orgFrame)
     return resultFrame;
 }
 
+// Nhận vào một frame và trả về video frame được lọc trung bình
+function average(orgFrame)
+{
+    var resultFrame = orgFrame;
+    var tempData = resultFrame.data;
+    
+    // Duyệt qua từng pixel và gán bằng giá trị trung bình của các pixel xung quanh
+    var width = orgFrame.width;
+    var height = orgFrame.height;
+    for(var w = 1; w < width - 1; w++)
+    {                    
+        for(var h = 1; h < height - 1; h++)
+        {
+            var pos = width * height * 4;
+            var new0 = tempData[i] 
+        }
+    }
+
+    resultFrame.data = tempData;
+
+    return resultFrame;
+}
 
 // Hàm thực hiện tính tích chập với các kernal
 function convolute(iData, kernel, delta)
@@ -191,10 +213,10 @@ function convolute(iData, kernel, delta)
     
     for (i=0; i<length; i++)
     {
-        if(i%4 == 3)
-        {
-            continue;
-        }       
+        // if(i%4 == 3)
+        // {
+        //     continue;
+        // }       
         
         iPrev = i - step;
         iNext = i + step;
