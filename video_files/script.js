@@ -1,6 +1,6 @@
 // Biến đánh dấu bộ lọc nào sẽ được sử dụng
 // Mặc định là Grayscale
-var filter = 1;
+var filter = 2;
 var DEF_GRAYSCALE = 1;
 var DEF_RED = 2;
 var DEF_GREEN = 3;
@@ -87,7 +87,6 @@ function draw(video, context, width, height, filterType)
 // Nhận vào một frame và trả về video frame dưới dạng grayscale
 function grayscale(orgFrame)
 {
-    alert("a");
     return orgFrame;
     var resultFrame = orgFrame;
     var tempData = resultFrame.data;
