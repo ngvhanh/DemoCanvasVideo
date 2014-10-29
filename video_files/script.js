@@ -267,7 +267,7 @@ function sobel(orgFrame)
          var temp =  Math.sqrt(Math.pow(temp1, 2) + Math.pow(temp2, 2));
          if(temp > 255)
             temp = 255;
-        alert(temp1);
+        //alert(temp1);
          //alert(temp2);
          //alert(temp);
          temp1 = Math.sqrt(Math.abs(temp1));
