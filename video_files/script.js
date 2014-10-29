@@ -41,35 +41,29 @@ function draw(video, context, width, height, filterType)
     if(video.paused || video.ended)
         return false;
         
-    //Draw on Canvas
+    // Gán dữ liệu trên video nguồn bằng frame hiện tại ở video gốc
     context.drawImage(video, 0, 0, width, height);
     
-    
-    //Get image data from the canvas
-    var frmData = context.getImageData(0, 0, width, height);
-    
+    // Lấy lại frame đó từ canvas (do không lấy trực tiếp frame vừ video gốc được)
+    var orgFrame = context.getImageData(0, 0, width, height);
+    // Tạo biến chứa frame kết quả
+    resultFrame = orgFrame;
+
     // Xử lý dựa vào bộ lọc hiện tại
-    //Processing
     //Grayscale
     if(filterType == 1)
-    {
-        frmData = grayscale(frmData);
-    }
+        resultFrame = grayscale(orgFrame);
     //Edge detect
-    if(filterType == 2)
-    {
-        frmData = edgeDetect(frmData);
-    }        
+    else if(filterType == 2)
+        resultFrame = edgeDetect(orgFrame);
     //Gaussian blur
-    if(filterType == 3)
-    {
-        frmData = gaussBlur(frmData);
-    }
+    else if(filterType == 3)
+        resultFrame = gaussBlur(orgFrame);
     
-    //Redraw on the canvas
-    context.putImageData(frmData, 0, 0);
+    // Vẽ lại kết quả xử lý lên canvas thể hiện video đích
+    context.putImageData(resultFrame, 0, 0);
 
-    //Repeat
+    // Thực hiện hành động này mỗi 40 mili giây (khoảng 25frame/giây)
     setTimeout(draw, 40, video, context, width, height, filter); 
 }
 
