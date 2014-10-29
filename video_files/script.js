@@ -271,9 +271,9 @@ function sobel(orgFrame)
          //alert(temp2);
          //alert(temp);
          temp1 = Math.sqrt(Math.abs(temp1));
-         tempData[i] = temp;
-         tempData[i+1] = temp;
-         tempData[i+2] = temp;
+         tempData[i] = 0;//;temp;
+         tempData[i+1] = 0;//temp;
+         tempData[i+2] = 0;//temp;
 
          tempData[i+3] = 255;
     }
