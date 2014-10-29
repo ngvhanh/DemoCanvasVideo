@@ -76,12 +76,12 @@ function draw(video, context, width, height, filterType)
         resultFrame = grayscale(orgFrame);
     if(filterType == DEF_BLUE)
         resultFrame = grayscale(orgFrame);
-    //Edge detect
-    else if(filterType == 2)
+    if(filterType == DEF_SOBEL)
         resultFrame = edgeDetect(orgFrame);
-    //Gaussian blur
-    else if(filterType == 3)
+    if(filterType == DEF_GAUSS)
         resultFrame = gaussBlur(orgFrame);
+    if(filterType == DEF_AVERAGE)
+        resultFrame = grayscale(orgFrame);
     
     // Vẽ lại kết quả xử lý lên canvas thể hiện video đích
     context.putImageData(resultFrame, 0, 0);
