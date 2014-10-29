@@ -268,6 +268,7 @@ function sobel(orgFrame)
 // Nhận vào một frame và trả về video frame được lọc Prewitt
 function prewitt(orgFrame)
 {
+    return orgFrame;
     var resultFrame = gray(orgFrame);
     var tempData = resultFrame.data;
     
@@ -315,13 +316,13 @@ function laplace(orgFrame)
     var width = resultFrame.width;
     var height = resultFrame.height;
 
-    for(c = 1; c < width - 1; c++)
+    for(var r = 1; r < height - 1; r++)
     {
-        for(var r = 1; r < height - 1; r++)
+        for(c = 1; c < width - 1; c++)
         {
             var i = 4 * (r*width + c);
 
-            var temp = (tempData[i-width] + tempData[i-4] - 4*tempData[i] + tempData[i+4] + tempData[i+width]);
+            var temp = (tempData[i-width*4] + tempData[i-4] - 4*tempData[i] + tempData[i+4] + tempData[i+width*4]);
             // Lấy đạo hàm theo 2 chiều
             
             tempData[i] = Math.abs(temp);//Math.sqrt(Math.abs(temp));
