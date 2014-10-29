@@ -158,8 +158,8 @@ function red(orgFrame)
     for (var i = 0; i < length; i += 4)
     {                    
         var temp = tempData[i] + DEF_ADD;
-        if(temp > 225)
-            temp = 225;
+        if(temp > 255)
+            temp = 255;
         tempData[i] = temp;
     }
 
@@ -180,8 +180,8 @@ function green(orgFrame)
     for (var i = 1; i < length; i += 4)
     {                    
         var temp = tempData[i] + DEF_ADD;
-        if(temp > 225)
-            temp = 225;
+        if(temp > 255)
+            temp = 255;
         tempData[i] = temp;
     }
 
@@ -202,8 +202,8 @@ function blue(orgFrame)
     for (var i = 2; i < length; i += 4)
     {                    
         var temp = tempData[i] + DEF_ADD;
-        if(temp > 225)
-            temp = 225;
+        if(temp > 255)
+            temp = 255;
         tempData[i] = temp;
     }
 
@@ -248,7 +248,7 @@ function sobel(orgFrame)
     var grayFrame = gray(orgFrame);
     var resultFrame = grayFrame;
     var tempData = resultFrame.data;
-    return resultFrame;
+    
     // Duyệt qua từng pixel và gán bằng giá trị trung bình của các pixel xung quanh
     var width = orgFrame.width;
 
@@ -298,7 +298,8 @@ function sobel(orgFrame)
          tempData[i] = temp;
          tempData[i+1] = temp;
          tempData[i+2] = temp;
-         //tempData[i+3] = temp;
+
+         tempData[i+3] = 255;
     }
 
 
