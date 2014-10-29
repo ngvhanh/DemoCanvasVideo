@@ -253,7 +253,7 @@ function sobel(orgFrame)
     var width = orgFrame.width;
 
     var length = tempData.length;
-    for (var i = 4; i < length - 4; i += 4)
+    for (var i = width*4; i < length - 4; i += 4)
     {
         var prvLine = i - 4 * width;
         var nxtLine = i + 4 * width;                    
