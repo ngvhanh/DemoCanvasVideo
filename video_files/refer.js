@@ -1,9 +1,9 @@
 // http://www.html5rocks.com/en/tutorials/canvas/imagefilters/
 
-Filters.tmpCanvas = document.createElement('canvas');
-Filters.tmpCtx = Filters.tmpCanvas.getContext('2d');
+tmpCanvas = document.createElement('canvas');
+tmpCtx = Filters.tmpCanvas.getContext('2d');
 
-Filters.createImageData = function(w,h) {
+createImageData = function(w,h) {
   return this.tmpCtx.createImageData(w,h);
 };
 
@@ -16,7 +16,7 @@ Filters.convolute = function(pixels, weights, opaque) {
   // pad output by the convolution matrix
   var w = sw;
   var h = sh;
-  var output = Filters.createImageData(w, h);
+  var output = createImageData(w, h);
   var dst = output.data;
   // go through the destination image pixels
   var alphaFac = opaque ? 1 : 0;
