@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var ctx = c.getContext('2d');
     
     //When user click PLAY
-    v.addEventListener('play', function(){
+    vid.addEventListener('play', function(){
         //Set video size to canvas            
         c.width = vid.clientWidth;
         c.height = vid.clientHeight;
