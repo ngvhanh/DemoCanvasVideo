@@ -127,7 +127,7 @@ function nextFilter()
 // ---------------- CÁC HÀM XỬ LÝ VIDEO THEO CÁC BỘ LỌC --------------
 
 // Nhận vào một frame và trả về video frame dưới dạng gray
-function grays(orgFrame)
+function gray(orgFrame)
 {
     var resultFrame = orgFrame;
     var tempData = resultFrame.data;
