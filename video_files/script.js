@@ -224,7 +224,7 @@ function average(orgFrame)
     // biến giữ vị trí của pixel cùng cột ở dòng liền trước
     var prvLine = 0;
     // biến giữ vị trí của pixel cùng cột ở dòng liền sau
-    var nxtLine = 2*width*4;
+    var nxtLine = 2*width;
 
     var length = tempData.length;
     for(var i = width; i < length - width; i++)
