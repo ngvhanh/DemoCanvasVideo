@@ -252,9 +252,9 @@ function sobel(orgFrame)
     var width = resultFrame.width;
     var height = resultFrame.height;
 
-    for(var r = 1; r < width - 1; r++)
+    for(var r = 1; r < height - 1; r++)
     {
-        for(c = 1; c < height - 1; c++)
+        for(c = 1; c < width - 1; c++)
         {
             var i = 4 * (c + r*width);
             var prvLine = i - 4 * width;
@@ -269,9 +269,9 @@ function sobel(orgFrame)
              var temp =  Math.sqrt(Math.pow(temp1, 2) + Math.pow(temp2, 2));
              if(temp > 255)
                 temp = 255;
-             tempData[i] = temp1;
-             tempData[i+1] = temp1;
-             tempData[i+2] = temp1;
+             tempData[i] = temp;
+             tempData[i+1] = temp;
+             tempData[i+2] = temp;
 
              tempData[i+3] = 255; 
         }
