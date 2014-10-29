@@ -324,7 +324,7 @@ function laplace(orgFrame)
 
             var temp = (tempData[i-width*4] + tempData[i-4] - 4*tempData[i] + tempData[i+4] + tempData[i+width*4]);
             // Lấy đạo hàm theo 2 chiều
-            var newValue = Math.abs(temp);//Math.sqrt(Math.abs(temp));
+            var newValue = Math.abs(temp) + 100;//Math.sqrt(Math.abs(temp));
             tempData[i] = newValue;
             tempData[i+1] = newValue;
             tempData[i+2] = newValue;
