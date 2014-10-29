@@ -86,8 +86,7 @@ function draw(video, context, width, height, filterType)
 
 // Nhận vào một frame và trả về video frame dưới dạng grayscale
 function grayscale(orgFrame)
-{
-    return orgFrame;
+{;
     var resultFrame = orgFrame;
     var tempData = resultFrame.data;
     
