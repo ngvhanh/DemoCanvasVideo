@@ -73,9 +73,9 @@ function draw(video, context, width, height, filterType)
     if(filterType == DEF_RED)
         resultFrame = red(orgFrame);
     if(filterType == DEF_GREEN)
-        resultFrame = grayscale(orgFrame);
+        resultFrame = green(orgFrame);
     if(filterType == DEF_BLUE)
-        resultFrame = grayscale(orgFrame);
+        resultFrame = blue(orgFrame);
     if(filterType == DEF_SOBEL)
         resultFrame = edgeDetect(orgFrame);
     if(filterType == DEF_GAUSS)
@@ -115,7 +115,7 @@ function grayscale(orgFrame)
 
 // Nhận vào một frame và trả về video frame được thêm màu ở kênh Red
 function red(orgFrame)
-{;
+{
     var resultFrame = orgFrame;
     var tempData = resultFrame.data;
     
@@ -133,6 +133,51 @@ function red(orgFrame)
 
     return resultFrame;
 }
+
+
+// Nhận vào một frame và trả về video frame được thêm màu ở kênh Green
+function green(orgFrame)
+{
+    var resultFrame = orgFrame;
+    var tempData = resultFrame.data;
+    
+    // Duyệt qua từng pixel và chuyển pixel đó sang dạng grayscale
+    var length = tempData.length;
+    for (var i = 0; i < length; i += 4)
+    {                    
+        var temp = tempData[i+1] + DEF_ADD;
+        if(temp > 225)
+            temp = 225;
+        tempData[i+1] = temp;
+    }
+
+    resultFrame.data = tempData;
+
+    return resultFrame;
+}
+
+
+// Nhận vào một frame và trả về video frame được thêm màu ở kênh Blue
+function blue(orgFrame)
+{
+    var resultFrame = orgFrame;
+    var tempData = resultFrame.data;
+    
+    // Duyệt qua từng pixel và chuyển pixel đó sang dạng grayscale
+    var length = tempData.length;
+    for (var i = 0; i < length; i += 4)
+    {                    
+        var temp = tempData[i+2] + DEF_ADD;
+        if(temp > 225)
+            temp = 225;
+        tempData[i+2] = temp;
+    }
+
+    resultFrame.data = tempData;
+
+    return resultFrame;
+}
+
 
 // Hàm thực hiện tính tích chập với các kernal
 function convolute(iData, kernel, delta)
