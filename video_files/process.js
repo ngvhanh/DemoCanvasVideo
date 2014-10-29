@@ -119,22 +119,9 @@ function average(orgFrame)
 // Nhận vào một frame và trả về video frame được lọc Sobel
 function sobel(orgFrame)
 {
-    var resultFrame = (orgFrame);
-    var tempData = resultFrame.data;
-    
-    // Duyệt qua từng pixel và gán bằng giá trị trung bình của các pixel xung quanh
-    var width = resultFrame.width;
-    var height = resultFrame.height;
-
-    for(var r = 1; r < height - 1; r++)
-    {
-        for(c = 1; c < width - 1; c++)
-        {
-        }
-    }
-
-
-    resultFrame.data = tempData;
+    return convolute(orgFrame, [ 0, -1,  0,
+           -1,  5, -1,
+            0, -1,  0]);)
 
     return resultFrame;
 }
@@ -200,7 +187,7 @@ function laplace(orgFrame)
 
             var temp = (tempData[i-step] + tempData[i-4] - 4*tempData[i] + tempData[i+4] + tempData[i+step]);
             // Lấy đạo hàm theo 2 chiều
-            var newValue = Math.abs(temp) + 100;//Math.sqrt(Math.abs(temp));
+            var newValue = Math.abs(temp) + 50;//Math.sqrt(Math.abs(temp));
             
             if(newValue > 255)
                 newValue = 255;
