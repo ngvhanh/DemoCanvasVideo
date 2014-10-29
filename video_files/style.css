@@ -1,0 +1,84 @@
+body
+{
+	background: black;
+    background-size: fixed;
+}
+
+.ibutton
+{
+    font-family: Segoe UI;
+    font-size: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    text-align: center;
+    color: #fff;
+    
+    position: fixed;
+    z-index: +1;
+    background: transparent;   
+    left: 650px;
+    top: 500px;
+    text-shadow:0px 1px 6px #2f6627;
+    background-color:transparent;
+    border-radius:2px;
+    border:1px solid #18ab29;
+}
+
+
+#filterText
+{
+    font: italic 16px 'segoe ui';
+    text-align: right;    
+    color: #00CCA0;
+    
+    position: fixed;
+    top: 50px;
+    right: 30px;
+}
+/*160 100 545*/
+#srcText
+{
+    font: 25px 'segoe ui';
+    color: #f00;
+    
+    position: fixed;
+    top: 100px;
+    left: 100px;
+}
+
+#dstText
+{
+    font: 25px 'segoe ui';
+    color: #f00;
+    
+    position: fixed;
+    top: 100px;
+    left: 675px;
+}
+
+.after_video
+{
+	position:absolute;
+    width: 560px;
+    height: 315px;
+    
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    top: 160px;
+    right: 70px;
+}
+
+.before_video
+{
+    position:absolute;
+	width: 560px;
+    height: 315px;
+    
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    top: 160px;
+    left: 70px;
+}
