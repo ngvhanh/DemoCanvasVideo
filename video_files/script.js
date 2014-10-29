@@ -1,8 +1,6 @@
 // Biến đánh dấu bộ lọc nào sẽ được sử dụng
 // Mặc định là Grayscale
 var filter = 1;
-var GRAYSCAL = 1;
-
 
 /*------------------------------------------------------------------------------
 Bắt đầu đoạn mã nguồn tham khảo tại HTML5 Doctor
@@ -146,8 +144,33 @@ function gaussBlur(frameData)
     return iData;
 }
 
+//Video controller-------------------------------------------------------------------------------------------------------------------
+//Play video
+function playVid()
+{
+    var v = document.getElementById('video');
+    var but = document.getElementById('playBut');
+    if (v.paused)
+    {
+        v.play();
+        but.textContent = 'PAUSE';
+    }
+    else
+    {
+        v.pause();
+        but.textContent = 'PLAY';
+    }
+}
+
+//Pause video
+function replayVid()
+{
+    var v = document.getElementById('video');
+    v.currentTime = 0;
+}
+
 //Change filter
-function nextFilter()
+function changeFilter()
 {
     var fTxt = document.getElementById('filterText');
     
