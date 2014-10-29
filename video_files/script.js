@@ -259,8 +259,8 @@ function sobel(orgFrame)
             var i = 4 * (c + r*width);
             var prvLine = i - 4 * width;
             var nxtLine = i + 4 * width;
-            var temp1 = (tempData[4 * ((c-1) + (r-1)*width] + 2*tempData[4 * (c + (r-1)*widthe] + tempData[4 * (c+1 + (r-1)*width]
-                     - tempData[4 * (c-1 + (r+1)*width] - 2*tempData[4 * (c + (r+1)*width] - tempData[4 * (c+1 + (r+1)*width]) / 6;
+            var temp1 = (tempData[prvLine-4] + 2*tempData[prvLine] + tempData[prvLine+4]
+                     - tempData[nxtLine-4] - 2*tempData[nxtLine] - tempData[nxtLine+4]) / 6;
              // Tính đạo hàm theo chiều dọc
              var temp2 = (tempData[prvLine-4] -  tempData[prvLine+4]
                          + 2*tempData[i-4] - 2*tempData[i+4]
@@ -269,7 +269,6 @@ function sobel(orgFrame)
              var temp =  Math.sqrt(Math.pow(temp1, 2) + Math.pow(temp2, 2));
              if(temp > 255)
                 temp = 255;
-            temp = Math.abs(temp1);
              tempData[i] = temp;
              tempData[i+1] = temp;
              tempData[i+2] = temp;
