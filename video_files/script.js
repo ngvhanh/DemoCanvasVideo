@@ -87,7 +87,7 @@ function grayscale(orgFrame)
     }
     
     resultFrame.data = pData;
-    orgFrame = resultFrame;
+    //orgFrame = resultFrame;
     return resultFrame;
 }
 
