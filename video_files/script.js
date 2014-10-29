@@ -94,11 +94,11 @@ function grayscale(orgFrame)
     var length = tempData.length;
     for (var i = 0; i < length; i += 4)
     {                    
-        var brightness = 0.2126 * tempData.data[i] + 0.7152 * tempData.data[i+1] + 0.0722 * tempData.data[i+2];
-        tempData.data[i] = brightness;
-        tempData.data[i+1] = brightness;
-        tempData.data[i+2] = brightness;
-        tempData.data[i+3] = 255;
+        var brightness = 0.2126 * tempData[i] + 0.7152 * tempData[i+1] + 0.0722 * tempData[i+2];
+        tempData[i] = brightness;
+        tempData[i+1] = brightness;
+        tempData[i+2] = brightness;
+        tempData[i+3] = 255;
     }
     resultFrame.data = tempData;
 
