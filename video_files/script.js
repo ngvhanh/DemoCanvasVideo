@@ -15,7 +15,9 @@ var TXT_GREEN = "Green"
 var TXT_BLUE = "Blue"
 var TXT_SOBEL = "Sobel"
 var TXT_GAUSS = "Gauss"
+var TXT_AVERAGE = "Average"
 
+var DEF_ADD = 50;
 
 /*------------------------------------------------------------------------------
 Bắt đầu đoạn mã nguồn tham khảo tại HTML5 Doctor
@@ -66,7 +68,13 @@ function draw(video, context, width, height, filterType)
 
     // Xử lý dựa vào bộ lọc hiện tại
     //Grayscale
-    if(filterType == 1)
+    if(filterType == DEF_GRAYSCALE)
+        resultFrame = grayscale(orgFrame);
+    if(filterType == DEF_RED)
+        resultFrame = grayscale(orgFrame);
+    if(filterType == DEF_GREEN)
+        resultFrame = grayscale(orgFrame);
+    if(filterType == DEF_BLUE)
         resultFrame = grayscale(orgFrame);
     //Edge detect
     else if(filterType == 2)
@@ -100,6 +108,27 @@ function grayscale(orgFrame)
         tempData[i+2] = brightness;
         tempData[i+3] = 255;
     }
+    resultFrame.data = tempData;
+
+    return resultFrame;
+}
+
+// Nhận vào một frame và trả về video frame được thêm màu ở kênh Red
+function red(orgFrame)
+{;
+    var resultFrame = orgFrame;
+    var tempData = resultFrame.data;
+    
+    // Duyệt qua từng pixel và chuyển pixel đó sang dạng grayscale
+    var length = tempData.length;
+    for (var i = 0; i < length; i += 4)
+    {                    
+        var temp = tempData[i] + DEF_ADD;
+        if(temp > 225)
+            temp = 225;
+        tempData[i] = temp;
+    }
+    
     resultFrame.data = tempData;
 
     return resultFrame;
@@ -164,19 +193,24 @@ function nextFilter()
 {
     var fTxt = document.getElementById('filterText');
     
-    if(filter == 1)
-    {
-        filter++;
-        fTxt.innerHTML = 'Edge Detection';
-    }
-    else if(filter == 2)
-    {
-        filter++;
-        fTxt.innerHTML = 'Gaussian Blur with 3x3 kernel';
-    }
-    else if(filter == 3)
-    {
-        filter = 1;
-        fTxt.innerHTML = 'Grayscale';
-    }
+    filter++;
+    if(filter > DEF_MAX)
+        filter = DEF_GRAYSCALE;
+
+    if(filter == DEF_GRAYSCALE)
+        fTxt.innerHTML = TXT_GRAYSCALE;
+    if(filter == DEF_RED)
+        fTxt.innerHTML = TXT_RED;
+    if(filter == DEF_GREEN)
+        fTxt.innerHTML = TXT_GREEN;
+    if(filter == DEF_BLUE)
+        fTxt.innerHTML = TXT_BLUE;
+    if(filter == DEF_SOBEL)
+        fTxt.innerHTML = TXT_SOBEL;
+    if(filter == DEF_GAUSS)
+        fTxt.innerHTML = TXT_GAUSS;
+    if(filter == DEF_AVERAGE)
+        fTxt.innerHTML = TXT_AVERAGE;
+
+    
 }
