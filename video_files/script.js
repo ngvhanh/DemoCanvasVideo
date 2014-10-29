@@ -4,7 +4,7 @@ var filter = 1;   //1 = Grayscale
 
 //Handle events
 document.addEventListener('DOMContentLoaded', function(){
-    var vid = document.getElementById('video');
+    var vid = document.getElementById('beforeVideo');
         
     //For showing processed video
     var c = document.getElementById('afterVideo');
