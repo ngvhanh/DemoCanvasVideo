@@ -242,8 +242,8 @@ function average(orgFrame)
     return resultFrame;
 }
 
-// Lọc Sobel
-function sobel(frameData)
+// Nhận vào một frame và trả về video frame được lọc Sobel
+function sobel(orgFrame)
 {
     var resultFrame = gray(orgFrame);
     var tempData = resultFrame.data;
@@ -279,8 +279,8 @@ function sobel(frameData)
     return resultFrame;
 }
 
-// Lọc Prewitt
-function prewitt(frameData)
+// Nhận vào một frame và trả về video frame được lọc Prewitt
+function prewitt(orgFrame)
 {
     var resultFrame = gray(orgFrame);
     var tempData = resultFrame.data;
@@ -316,8 +316,8 @@ function prewitt(frameData)
     return resultFrame;
 }
 
-// Lọc Laplace
-function laplace(frameData)
+// Nhận vào một frame và trả về video frame được lọc Laplace
+function laplace(orgFrame)
 {
     var resultFrame = gray(orgFrame);
     var tempData = resultFrame.data;
