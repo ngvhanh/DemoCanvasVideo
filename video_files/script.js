@@ -245,7 +245,7 @@ function average(orgFrame)
 // Nhận vào một frame và trả về video frame được lọc Sobel
 function sobel(orgFrame)
 {
-    var resultFrame = gray(orgFrame);
+    var resultFrame = (orgFrame);
     var tempData = resultFrame.data;
     
     // Duyệt qua từng pixel và gán bằng giá trị trung bình của các pixel xung quanh
@@ -270,7 +270,7 @@ function sobel(orgFrame)
         //alert(temp1);
          //alert(temp2);
          //alert(temp);
-         alert(temp);
+         //alert(temp);
          tempData[i] = 0;//;temp;
          tempData[i+1] = 0;//temp;
          tempData[i+2] = 0;//temp;
