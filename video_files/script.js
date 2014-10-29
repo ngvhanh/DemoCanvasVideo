@@ -87,6 +87,8 @@ function draw(video, context, width, height, filterType)
 // Nhận vào một frame và trả về video frame dưới dạng grayscale
 function grayscale(orgFrame)
 {
+    alert("a");
+    return orgFrame;
     var resultFrame = orgFrame;
     var tempData = resultFrame.data;
     
@@ -101,8 +103,8 @@ function grayscale(orgFrame)
         tempData.data[i+3] = 255;
     }
     resultFrame.data = tempData;
-    return orgFrame;
-    //return resultFrame;
+
+    return resultFrame;
 }
 
 // Hàm thực hiện tính tích chập với các kernal
