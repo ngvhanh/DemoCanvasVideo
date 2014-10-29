@@ -222,12 +222,12 @@ function average(orgFrame)
     var width = resultFrame.width;
 
     // biến giữ vị trí của pixel cùng cột ở dòng liền trước
-    var prvLine = 1;
+    var prvLine = 4;
     // biến giữ vị trí của pixel cùng cột ở dòng liền sau
-    var nxtLine = 2*width*4 + 1;
+    var nxtLine = 2*width*4 + 4;
 
     var length = tempData.length;
-    for(var i = width*4 + 1; i < length - width*4; i++)
+    for(var i = width*4 + 4; i < length - width*4 - 4; i++)
     {
         tempData[i] = (tempData[prvLine-4] + tempData[prvLine] + tempData[prvLine+4]
                         + tempData[i-4] + tempData[i] + tempData[i+4]
@@ -252,12 +252,12 @@ function sobel(orgFrame)
     var width = orgFrame.width;
 
     // biến giữ vị trí của pixel cùng cột ở dòng liền trước
-    var prvLine = 0;
+    var prvLine = 4;
     // biến giữ vị trí của pixel cùng cột ở dòng liền sau
-    var nxtLine = 2*width*4;
+    var nxtLine = 2*width*4 + 4;
 
     var length = tempData.length;
-    for(var i = width*4; i < length - width; i++)
+    for(var i = width*4 + 4; i < length - width*4 - 4; i++)
     {
         // Tính đạo hàm theo chiều ngang
         var temp1 = (tempData[prvLine-4] + 2*tempData[prvLine] + tempData[prvLine+4]
