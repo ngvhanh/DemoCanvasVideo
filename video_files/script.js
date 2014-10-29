@@ -81,7 +81,7 @@ function draw(video, context, width, height, filterType)
     if(filterType == DEF_GAUSS)
         resultFrame = gaussBlur(orgFrame);
     if(filterType == DEF_AVERAGE)
-        resultFrame = grayscale(orgFrame);
+        resultFrame = average(orgFrame);
     
     // Vẽ lại kết quả xử lý lên canvas thể hiện video đích
     context.putImageData(resultFrame, 0, 0);
@@ -186,14 +186,24 @@ function average(orgFrame)
     
     // Duyệt qua từng pixel và gán bằng giá trị trung bình của các pixel xung quanh
     var width = orgFrame.width;
-    var height = orgFrame.height;
-    for(var w = 1; w < width - 1; w++)
-    {                    
-        for(var h = 1; h < height - 1; h++)
-        {
-            var pos = width * height * 4;
-            var new0 = tempData[i] 
-        }
+    // var height = orgFrame.height;
+    // for(var w = 1; w < width - 1; w++)
+    // {                    
+    //     for(var h = 1; h < height - 1; h++)
+    //     {
+    //         var pos = width * height * 4;
+    //         var new0 = tempData[i] 
+    //     }
+    // }
+
+    var length = tempData.length;
+    for(var i = width; i < length - width; i++)
+    {
+        var prvLine = i - width * 4;
+        var nxtLine = i - width * 4;
+        tempData[i] = (tempData[prvLine - 4] + tempData[prvLine] + tempData[prvLine + 4]
+                        + tempData[i - 4] + tempData[i] + tempData[i + 4]
+                        + tempData[nxtLine - 4] + tempData[nxtLine] + tempData[nxtLine + 4]) / 9;
     }
 
     resultFrame.data = tempData;
@@ -213,10 +223,10 @@ function convolute(iData, kernel, delta)
     
     for (i=0; i<length; i++)
     {
-        // if(i%4 == 3)
-        // {
-        //     continue;
-        // }       
+        if(i%4 == 3)
+        {
+            continue;
+        }       
         
         iPrev = i - step;
         iNext = i + step;
