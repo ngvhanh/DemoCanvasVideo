@@ -266,7 +266,7 @@ function sobel(orgFrame)
                      + tempData[nxtLine-4] - tempData[nxtLine+4]);
          // Lấy đạo hàm theo 2 chiều
          var temp =  Math.sqrt(Math.pow(temp1, 2) + Math.pow(temp2, 2));
-
+         alert(temp);
          tempData[i] = temp;
          tempData[i+1] = temp;
          tempData[i+2] = temp;
