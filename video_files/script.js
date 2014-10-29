@@ -1,17 +1,9 @@
 // Biến đánh dấu bộ lọc nào sẽ được sử dụng
 // Mặc định là Grayscale
-var DEF_GRAYSCALE = 1;
-var DEF_GREEN = 2;
-var DEF_RED = 3;
-var DEF_BLUE = 4;
-var DEF_AVERAGE = 5;
-var DEF_SOBEL = 6;
-var DEF_GAUSS = 7;
-var DEF_MAX = DEF_GAUSS;
-var filter = DEF_GRAYSCALE;
+var filter = 1;
+var GRAYSCAL = 1;
 
-var txtGRAYSCALE = "Grayscale"
-var txtGREEN = "Green"
+
 /*------------------------------------------------------------------------------
 Bắt đầu đoạn mã nguồn tham khảo tại HTML5 Doctor
 Địa chỉ tham khảo: http://html5doctor.com/video-canvas-magic/
@@ -61,20 +53,13 @@ function draw(video, context, width, height, filterType)
 
     // Xử lý dựa vào bộ lọc hiện tại
     //Grayscale
-    if(filterType == DEF_GRAYSCALE)
+    if(filterType == 1)
         resultFrame = grayscale(orgFrame);
-    if(filterType == DEF_GREEN)
-        resultFrame = grayscale(orgFrame);
-    if(filterType == DEF_RED)
-        resultFrame = grayscale(orgFrame);
-    if(filterType == DEF_BLUE)
-        resultFrame = grayscale(orgFrame);
-    
     //Edge detect
-    else if(filterType == DEF_SOBEL)
+    else if(filterType == 2)
         resultFrame = edgeDetect(orgFrame);
     //Gaussian blur
-    else if(filterType == DEF_GAUSS)
+    else if(filterType == 3)
         resultFrame = gaussBlur(orgFrame);
     
     // Vẽ lại kết quả xử lý lên canvas thể hiện video đích
@@ -166,10 +151,6 @@ function nextFilter()
 {
     var fTxt = document.getElementById('filterText');
     
-    filter++;
-    if(filter > DEF_MAX) 
-        filter = DEF_GRAYSCALE;
-
     if(filter == 1)
     {
         filter++;
