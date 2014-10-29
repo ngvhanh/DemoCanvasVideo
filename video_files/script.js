@@ -259,11 +259,11 @@ function sobel(orgFrame)
         var nxtLine = i + 4 * width;                    
         // Tính đạo hàm theo chiều ngang
          var temp1 = (tempData[prvLine-4] + 2*tempData[prvLine] + tempData[prvLine+4]
-                     - tempData[nxtLine-4] - 2*tempData[nxtLine] - tempData[nxtLine+4]);
+                     - tempData[nxtLine-4] - 2*tempData[nxtLine] - tempData[nxtLine+4]) / 6;
          // Tính đạo hàm theo chiều dọc
          var temp2 = (tempData[prvLine-4] -  tempData[prvLine+4]
                      + 2*tempData[i-4] - 2*tempData[i+4]
-                     + tempData[nxtLine-4] - tempData[nxtLine+4]);
+                     + tempData[nxtLine-4] - tempData[nxtLine+4]) / 6;
          // Lấy đạo hàm theo 2 chiều
          var temp =  Math.sqrt(Math.pow(temp1, 2) + Math.pow(temp2, 2));
          alert(temp);
