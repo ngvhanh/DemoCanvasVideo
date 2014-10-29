@@ -76,7 +76,7 @@ function grayscale(orgFrame)
     var tempData = resultFrame.data;
     
     // Duyệt qua từng pixel và chuyển pixel đó sang dạng grayscale
-    var length = pData.length;
+    var length = tempData.length;
     for (var i = 0; i < length; i += 4)
     {                    
         var brightness = 0.2126 * tempData.data[i] + 0.7152 * tempData.data[i+1] + 0.0722 * tempData.data[i+2];
@@ -165,43 +165,3 @@ function nextFilter()
         fTxt.innerHTML = 'Grayscale';
     }
 }
-
-
-
-
-
-
-
-
-////Convolute with kernel 3x3
-//function convolute(iData, hKernel, vKernel, mean)
-//{
-//    var w = iData.width;    
-//    var pData = iData.data;
-//    var pData2 = iData.data;
-//    var length = pData.length;
-//    var i;
-//    var step = w*4;
-//    
-//    //Horizontal filtering
-//    for (i=0; i<length; i++)
-//    {
-//        if(i%4 == 3)
-//        {
-//            continue;
-//        }        
-//        pData2[i] = pData[i-4]*hKernel[2] + pData[i]*hKernel[1] + pData[i + 4]*hKernel[0] + mean;        
-//    }
-//    
-//    //Vertical filtering
-//    for (i=0; i<length; i++)
-//    {
-//        if(i%4 == 3)
-//        {
-//            continue;
-//        }        
-//        pData[i] = pData2[i-step]*vKernel[2] + pData2[i]*vKernel[1] + pData2[i + step]*vKernel[0] + mean;      
-//    }
-//    
-//    iData.data = pData;
-//}
