@@ -222,12 +222,12 @@ function average(orgFrame)
     var width = orgFrame.width;
 
     // biến giữ vị trí của pixel cùng cột ở dòng liền trước
-    var prvLine = 0;
+    var prvLine = 1;
     // biến giữ vị trí của pixel cùng cột ở dòng liền sau
-    var nxtLine = 2*width;
+    var nxtLine = 2*width + 1;
 
     var length = tempData.length;
-    for(var i = width; i < length - width; i++)
+    for(var i = width + 1; i < length - width; i++)
     {
         tempData[i] = (tempData[prvLine-4] + tempData[prvLine] + tempData[prvLine+4]
                         + tempData[i-4] + tempData[i] + tempData[i+4]
