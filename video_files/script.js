@@ -256,7 +256,7 @@ function sobel(orgFrame)
     {
         for(c = 1; c < height - 1; c++)
         {
-            var index = 4 * (x + y*width);
+            var index = 4 * (c + r*width);
             var prvLine = index - 4 * width;
             var nxtLine = index + 4 * width;
             var temp1 = (tempData[prvLine-4] + 2*tempData[prvLine] + tempData[prvLine+4]
