@@ -256,9 +256,9 @@ function sobel(orgFrame)
     {
         for(c = 1; c < height - 1; c++)
         {
-            var index = 4 * (c + r*width);
-            var prvLine = index - 4 * width;
-            var nxtLine = index + 4 * width;
+            var i = 4 * (c + r*width);
+            var prvLine = i - 4 * width;
+            var nxtLine = i + 4 * width;
             var temp1 = (tempData[prvLine-4] + 2*tempData[prvLine] + tempData[prvLine+4]
                      - tempData[nxtLine-4] - 2*tempData[nxtLine] - tempData[nxtLine+4]) / 6;
              // Tính đạo hàm theo chiều dọc
