@@ -121,7 +121,7 @@ function sobel(orgFrame)
 {
     return convolute(orgFrame, [ 0, -1,  0,
            -1,  5, -1,
-            0, -1,  0]);)
+            0, -1,  0])
 
     return resultFrame;
 }
