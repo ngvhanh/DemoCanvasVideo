@@ -233,8 +233,8 @@ function average(orgFrame)
                         + tempData[i-4] + tempData[i] + tempData[i+4]
                         + tempData[nxtLine-4] + tempData[nxtLine] + tempData[nxtLine+4]) / 9;
         // cập nhật vị trí dòng liền trước và dòng liền sau cho bước tiếp theo
-        prvLine = i;
-        nxtLine = nxtLine + width;
+        prvLine++;
+        nxtLine++;
     }
 
     resultFrame.data = tempData;
