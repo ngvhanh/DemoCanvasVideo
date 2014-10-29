@@ -1,6 +1,13 @@
 // Biến đánh dấu bộ lọc nào sẽ được sử dụng
 // Mặc định là Grayscale
-var filter = 1;
+var DEF_GRAYSCALE = 1;
+var DEF_GREEN = 2;
+var DEF_RED = 3;
+var DEF_BLUE = 4;
+var DEF_AVERAGE = 5;
+var DEF_SOBEL = 6;
+var DEF_GAUSS = 7;
+var filter = DEF_GRAYSCALE;
 
 /*------------------------------------------------------------------------------
 Bắt đầu đoạn mã nguồn tham khảo tại HTML5 Doctor
@@ -51,13 +58,20 @@ function draw(video, context, width, height, filterType)
 
     // Xử lý dựa vào bộ lọc hiện tại
     //Grayscale
-    if(filterType == 1)
+    if(filterType == DEF_GRAYSCALE)
         resultFrame = grayscale(orgFrame);
+    if(filterType == DEF_GREEN)
+        resultFrame = grayscale(orgFrame);
+    if(filterType == DEF_RED)
+        resultFrame = grayscale(orgFrame);
+    if(filterType == DEF_BLUE)
+        resultFrame = grayscale(orgFrame);
+    
     //Edge detect
-    else if(filterType == 2)
+    else if(filterType == DEF_SOBEL)
         resultFrame = edgeDetect(orgFrame);
     //Gaussian blur
-    else if(filterType == 3)
+    else if(filterType == DEF_GAUSS)
         resultFrame = gaussBlur(orgFrame);
     
     // Vẽ lại kết quả xử lý lên canvas thể hiện video đích
@@ -144,33 +158,8 @@ function gaussBlur(frameData)
     return iData;
 }
 
-//Video controller-------------------------------------------------------------------------------------------------------------------
-//Play video
-function playVid()
-{
-    var v = document.getElementById('video');
-    var but = document.getElementById('playBut');
-    if (v.paused)
-    {
-        v.play();
-        but.textContent = 'PAUSE';
-    }
-    else
-    {
-        v.pause();
-        but.textContent = 'PLAY';
-    }
-}
-
-//Pause video
-function replayVid()
-{
-    var v = document.getElementById('video');
-    v.currentTime = 0;
-}
-
 //Change filter
-function changeFilter()
+function nextFilter()
 {
     var fTxt = document.getElementById('filterText');
     
