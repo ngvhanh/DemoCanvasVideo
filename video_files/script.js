@@ -69,28 +69,26 @@ function draw(video, context, width, height, filterType)
 
 // ---------------- CÁC HÀM XỬ LÝ VIDEO THEO CÁC BỘ LỌC --------------
 
-
-// Chuyển frame đầu vào thành màu xám
+// Nhận vào một frame và trả về video frame dưới dạng grayscale
 function grayscale(orgFrame)
 {
     var resultFrame = orgFrame;
-    var pData = resultFrame.data;
+    var tempData = resultFrame.data;
     
-    //Acess all pixels and grayscale them
+    // Duyệt qua từng pixel và chuyển pixel đó sang dạng grayscale
     var length = pData.length;
-    for (var i=0; i<length; i+=4)
+    for (var i = 0; i < length; i += 4)
     {                    
-        var gray = pData[i]*0.3 + pData[i+1]*0.59 + pData[i+2]*0.11;
-        pData[i] = gray;
-        pData[i+1] = gray;
-        pData[i+2] = gray;
+        var brightness = 0.2126 * tempData.data[i] + 0.7152 * tempData.data[i+1] + 0.0722 * tempData.data[i+2];
+        tempData.data[i] = brightness;
+        tempData.data[i+1] = brightness;
+        tempData.data[i+2] = brightness;
+        tempData.data[i+3] = 255;
     }
+    resultFrame.data = tempData;
     
-    resultFrame.data = pData;
-    //orgFrame = resultFrame;
     return resultFrame;
 }
-
 
 // Hàm thực hiện tính tích chập với các kernal
 function convolute(iData, kernel, delta)
