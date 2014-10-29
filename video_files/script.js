@@ -71,7 +71,7 @@ function draw(video, context, width, height, filterType)
     if(filterType == DEF_GRAYSCALE)
         resultFrame = grayscale(orgFrame);
     if(filterType == DEF_RED)
-        resultFrame = grayscale(orgFrame);
+        resultFrame = red(orgFrame);
     if(filterType == DEF_GREEN)
         resultFrame = grayscale(orgFrame);
     if(filterType == DEF_BLUE)
@@ -128,7 +128,7 @@ function red(orgFrame)
             temp = 225;
         tempData[i] = temp;
     }
-    
+
     resultFrame.data = tempData;
 
     return resultFrame;
