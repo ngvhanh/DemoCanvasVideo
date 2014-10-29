@@ -249,8 +249,8 @@ function sobel(orgFrame)
     var tempData = resultFrame.data;
     
     // Duyệt qua từng pixel và gán bằng giá trị trung bình của các pixel xung quanh
-    var width = orgFrame.width;
-    var height = orgFrame.height;
+    var width = resultFrame.width;
+    var height = resultFrame.height;
 
     for(var r = 1; r < width - 1; r++)
     {
