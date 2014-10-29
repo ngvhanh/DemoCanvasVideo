@@ -219,7 +219,7 @@ function average(orgFrame)
     var tempData = resultFrame.data;
     
     // Duyệt qua từng pixel và gán bằng giá trị trung bình của các pixel xung quanh
-    var width = orgFrame.width;
+    var width = resultFrame.width;
 
     // biến giữ vị trí của pixel cùng cột ở dòng liền trước
     var prvLine = 1;
