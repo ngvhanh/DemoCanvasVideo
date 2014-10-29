@@ -315,9 +315,9 @@ function laplace(orgFrame)
     var width = resultFrame.width;
     var height = resultFrame.height;
 
-    for(var r = 1; r < height - 1; r++)
+    for(c = 1; c < width - 1; c++)
     {
-        for(c = 1; c < width - 1; c++)
+        for(var r = 1; r < height - 1; r++)
         {
             var i = 4 * (r*width + c);
 
