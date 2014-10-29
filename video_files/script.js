@@ -84,7 +84,7 @@ function draw(video, context, width, height, filterType)
     else if(filterType == DEF_PREWITT)
         resultFrame = prewitt(orgFrame);
     else if(filterType == DEF_LAPLACE)
-        resultFrame = gaussBlur(orgFrame);
+        resultFrame = laplace(orgFrame);
     else if(filterType == DEF_AVERAGE)
         resultFrame = average(orgFrame);
     
@@ -334,7 +334,7 @@ function laplace(orgFrame)
     {
         var temp = tempData[i-width] + tempData[i-4] - 4*tempData[i] + tempData[i+4] + tempData[i+width+4];
         // Lấy đạo hàm theo 2 chiều
-        tempData[i] = Math.sqrt(Math.pow(temp1, 2) + Math.pow(temp2, 2));
+        tempData[i] = Math.sqrt(temp);
     }
 
     resultFrame.data = tempData;
