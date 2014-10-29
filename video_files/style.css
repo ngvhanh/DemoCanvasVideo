@@ -1,30 +1,29 @@
+/*---------- BACKGROUND --------*/
+
 body
 {
 	background: black;
     background-size: fixed;
 }
 
+/*---------- BUTTON -----------*/
 .ibutton
 {
-    font-family: Segoe UI;
-    font-size: 20px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: white;
-    text-align: center;
-    color: #fff;
-    
-    position: fixed;
-    z-index: +1;
-    background: transparent;   
     left: 650px;
     top: 500px;
-    text-shadow:0px 1px 6px #2f6627;
-    background-color:transparent;
+    position: fixed;
+
+    background: transparent;
     border-radius:2px;
     border:1px solid #336600;
-}
 
+    font-family: Segoe UI;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    text-align: center;
+    text-shadow:0px 1px 6px #2f6627;
+}
 
 #filterText
 {
@@ -36,10 +35,11 @@ body
     top: 50px;
     right: 30px;
 }
-/*160 100 545*/
+
+/*------------- VIDEO ------------*/
 .videoText
 {
-    font: 25px 'segoe ui';
+    font: 21px 'segoe ui';
     color: #FFFFFF;
     position: fixed;
     text-shadow:0px 1px 6px #2f6627;
@@ -54,30 +54,28 @@ body
 #afterText
 {
     top: 100px;
-    right: 580px;
+    left: 736px;
 }
-.after_video
+
+.iVideo
 {
-	position:absolute;
+    position:absolute;
     width: 560px;
     height: 315px;
     
     border-style: solid;
     border-width: 1px;
     border-color: #003300;
-    top: 160px;
-    right: 70px;
 }
 
-.before_video
+#beforeVideo
 {
-    position:absolute;
-	width: 560px;
-    height: 315px;
-    
-    border-style: solid;
-    border-width: 1px;
-    border-color: #003300;
     top: 160px;
     left: 70px;
+}
+
+#afterVideo
+{
+    top: 160px;
+    left: 736px;
 }

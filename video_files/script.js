@@ -4,17 +4,17 @@ var filter = 1;   //1 = Grayscale
 
 //Handle events
 document.addEventListener('DOMContentLoaded', function(){
-    var v = document.getElementById('video');
+    var vid = document.getElementById('video');
         
     //For showing processed video
-    var c = document.getElementById('dstCanvas');
+    var c = document.getElementById('afterVideo');
     var ctx = c.getContext('2d');
     
     //When user click PLAY
     v.addEventListener('play', function(){
         //Set video size to canvas            
-        c.width = v.clientWidth;
-        c.height = v.clientHeight;
+        c.width = vid.clientWidth;
+        c.height = vid.clientHeight;
         
         //Draw video to canvas
         draw(this, ctx, c.width, c.height, filter);
