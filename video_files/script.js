@@ -299,7 +299,7 @@ function sobel(orgFrame)
          tempData[i+1] = temp;
          tempData[i+2] = temp;
 
-         tempData[i+3] = 255;
+         tempData[i+3] = 0;
     }
 
 
