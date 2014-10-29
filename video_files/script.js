@@ -7,8 +7,11 @@ var DEF_BLUE = 4;
 var DEF_AVERAGE = 5;
 var DEF_SOBEL = 6;
 var DEF_GAUSS = 7;
+var DEF_MAX = DEF_GAUSS;
 var filter = DEF_GRAYSCALE;
 
+var txtGRAYSCALE = "Grayscale"
+var txtGREEN = "Green"
 /*------------------------------------------------------------------------------
 Bắt đầu đoạn mã nguồn tham khảo tại HTML5 Doctor
 Địa chỉ tham khảo: http://html5doctor.com/video-canvas-magic/
@@ -163,6 +166,10 @@ function nextFilter()
 {
     var fTxt = document.getElementById('filterText');
     
+    filter++;
+    if(filter > DEF_MAX) 
+        filter = DEF_GRAYSCALE;
+
     if(filter == 1)
     {
         filter++;
