@@ -1,60 +1,74 @@
-//Init
-//Global variable for filter type
-var filter = 1;   //1 = Grayscale
+// Biến đánh dấu bộ lọc nào sẽ được sử dụng
+// Mặc định là Grayscale
+var filter = 1;
 
-//Handle events
-document.addEventListener('DOMContentLoaded', function(){
-    var vid = document.getElementById('beforeVideo');
+/*------------------------------------------------------------------------------
+Bắt đầu đoạn mã nguồn tham khảo tại HTML5 Doctor
+Địa chỉ tham khảo: http://html5doctor.com/video-canvas-magic/
+Các ghi chú được tự thêm vào, một số tên biến và vị trí xuống dòng được thay đổi
+-------------------------------------------------------------------------------*/
+
+// Bắt sự kiện
+document.addEventListener('DOMContentLoaded',
+    function(){
+        // Lấy biến trỏ tới video nguồn
+        var vid = document.getElementById('beforeVideo');
+        // Lấy biến trỏ tới video đích     
+        var c = document.getElementById('afterVideo');
+        var ctx = c.getContext('2d');
         
-    //For showing processed video
-    var c = document.getElementById('afterVideo');
-    var ctx = c.getContext('2d');
-    
-    //When user click PLAY
-    vid.addEventListener('play', function(){
-        //Set video size to canvas            
+        // Gán kích thước của canvas chứa kết quả xử lý bằng với kích thước video gốc
         c.width = vid.clientWidth;
         c.height = vid.clientHeight;
-        
-        //Draw video to canvas
-        draw(this, ctx, c.width, c.height, filter);
-    },false);
-},false);
 
-//Drawing canvas
+        // Thêm hàm xử lý sự kiện video play
+        // Hàm này sẽ xử lý dựa vào bộ lọc hiện tại do người dùng chọn    
+        vid.addEventListener('play',
+        function(){
+            // Vẽ kết quả xử lý lên cavas (video)
+            draw(this, ctx, c.width, c.height, filter);
+        },false);
+    },false);
+
+
+// Đoạn code tham khảo một phần tại địa chỉ như trên
+// Lấy nội dung trong "video" xử lý dựa vào "filterType"
+// Kết quả được vẽ lên canvas đựa trỏ đến bởi biến "context"
+// Video gốc có kích thức "width" và "height" tương ứng
 function draw(video, context, width, height, filterType)
 {
-    if(video.paused || video.ended) return false;
+    // Không xử lý nếu video gốc hiện không chạy
+    if(video.paused || video.ended)
+        return false;
         
     //Draw on Canvas
     context.drawImage(video, 0, 0, width, height);
     
-    if(filterType != 0)
+    
+    //Get image data from the canvas
+    var frmData = context.getImageData(0, 0, width, height);
+    
+    // Xử lý dựa vào bộ lọc hiện tại
+    //Processing
+    //Grayscale
+    if(filterType == 1)
     {
-        //Get image data from the canvas
-        var frmData = context.getImageData(0, 0, width, height);
-        
-        //Processing
-        //Grayscale
-        if(filterType == 1)
-        {
-            frmData = grayscale(frmData);
-        }
-        //Edge detect
-        if(filterType == 2)
-        {
-            frmData = edgeDetect(frmData);
-        }        
-        //Gaussian blur
-        if(filterType == 3)
-        {
-            frmData = gaussBlur(frmData);
-        }
-        
-        //Redraw on the canvas
-        context.putImageData(frmData, 0, 0);
+        frmData = grayscale(frmData);
+    }
+    //Edge detect
+    if(filterType == 2)
+    {
+        frmData = edgeDetect(frmData);
+    }        
+    //Gaussian blur
+    if(filterType == 3)
+    {
+        frmData = gaussBlur(frmData);
     }
     
+    //Redraw on the canvas
+    context.putImageData(frmData, 0, 0);
+
     //Repeat
     setTimeout(draw, 40, video, context, width, height, filter); 
 }
