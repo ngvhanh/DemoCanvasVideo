@@ -119,83 +119,80 @@ function average(orgFrame)
 // Nhận vào một frame và trả về video frame được lọc Sobel
 function sobel(orgFrame)
 {
-    return convolute(orgFrame, [ 0, -1,  0,
-           -1,  5, -1,
-            0, -1,  0])
-
-    return resultFrame;
+    return orgFrame;
 }
 
 // Nhận vào một frame và trả về video frame được lọc Prewitt
 function prewitt(orgFrame)
 {
     return orgFrame;
-    var resultFrame = gray(orgFrame);
-    var tempData = resultFrame.data;
+    // var resultFrame = gray(orgFrame);
+    // var tempData = resultFrame.data;
     
-    // Duyệt qua từng pixel và gán bằng giá trị trung bình của các pixel xung quanh
-    var width = orgFrame.width;
+    // // Duyệt qua từng pixel và gán bằng giá trị trung bình của các pixel xung quanh
+    // var width = orgFrame.width;
 
-    // biến giữ vị trí của pixel cùng cột ở dòng liền trước
-    var prvLine = 0;
-    // biến giữ vị trí của pixel cùng cột ở dòng liền sau
-    var nxtLine = 2*width*4;
+    // // biến giữ vị trí của pixel cùng cột ở dòng liền trước
+    // var prvLine = 0;
+    // // biến giữ vị trí của pixel cùng cột ở dòng liền sau
+    // var nxtLine = 2*width*4;
 
-    var length = tempData.length;
-    for(var i = width*4; i < length - width; i++)
-    {
-        // Tính đạo hàm theo chiều ngang
-        var temp1 = (tempData[prvLine-4] + tempData[prvLine] + tempData[prvLine+4]
-                    - tempData[nxtLine-4] - tempData[nxtLine] - tempData[nxtLine+4]);
-        // Tính đạo hàm theo chiều dọc
-        var temp2 = (tempData[prvLine-4] -  tempData[prvLine+4]
-                    + tempData[i-4] - tempData[i+4]
-                    + tempData[nxtLine-4] - tempData[nxtLine+4]);
-        // Lấy đạo hàm theo 2 chiều
-        tempData[i] = Math.sqrt(Math.pow(temp1, 2) + Math.pow(temp2, 2));
+    // var length = tempData.length;
+    // for(var i = width*4; i < length - width; i++)
+    // {
+    //     // Tính đạo hàm theo chiều ngang
+    //     var temp1 = (tempData[prvLine-4] + tempData[prvLine] + tempData[prvLine+4]
+    //                 - tempData[nxtLine-4] - tempData[nxtLine] - tempData[nxtLine+4]);
+    //     // Tính đạo hàm theo chiều dọc
+    //     var temp2 = (tempData[prvLine-4] -  tempData[prvLine+4]
+    //                 + tempData[i-4] - tempData[i+4]
+    //                 + tempData[nxtLine-4] - tempData[nxtLine+4]);
+    //     // Lấy đạo hàm theo 2 chiều
+    //     tempData[i] = Math.sqrt(Math.pow(temp1, 2) + Math.pow(temp2, 2));
 
-        // cập nhật vị trí dòng liền trước và dòng liền sau cho bước tiếp theo
-        prvLine = i;
-        nxtLine = nxtLine + width;
-    }
+    //     // cập nhật vị trí dòng liền trước và dòng liền sau cho bước tiếp theo
+    //     prvLine = i;
+    //     nxtLine = nxtLine + width;
+    // }
 
-    resultFrame.data = tempData;
+    // resultFrame.data = tempData;
 
-    return resultFrame;
+    // return resultFrame;
 }
 
 // Nhận vào một frame và trả về video frame được lọc Laplace
 function laplace(orgFrame)
 {
-    var resultFrame = gray(orgFrame);
-    var tempData = resultFrame.data;
+    return orgFrame;
+    // var resultFrame = gray(orgFrame);
+    // var tempData = resultFrame.data;
     
-    // Duyệt qua từng pixel và gán bằng giá trị trung bình của các pixel xung quanh
-    var width = orgFrame.width;
+    // // Duyệt qua từng pixel và gán bằng giá trị trung bình của các pixel xung quanh
+    // var width = orgFrame.width;
 
-    // Duyệt qua từng pixel và gán bằng giá trị trung bình của các pixel xung quanh
-    var width = resultFrame.width;
-    var height = resultFrame.height;
+    // // Duyệt qua từng pixel và gán bằng giá trị trung bình của các pixel xung quanh
+    // var width = resultFrame.width;
+    // var height = resultFrame.height;
 
-    var step = width * 4;
+    // var step = width * 4;
 
-    for(var r = 1; r < height - 1; r++)
-    {
-        for(c = 1; c < width - 1; c++)
-        {
-            var i = 4 * (r*width + c);
+    // for(var r = 1; r < height - 1; r++)
+    // {
+    //     for(c = 1; c < width - 1; c++)
+    //     {
+    //         var i = 4 * (r*width + c);
 
-            var temp = (tempData[i-step] + tempData[i-4] - 4*tempData[i] + tempData[i+4] + tempData[i+step]);
-            // Lấy đạo hàm theo 2 chiều
-            var newValue = Math.abs(temp) + 50;//Math.sqrt(Math.abs(temp));
+    //         var temp = (tempData[i-step] + tempData[i-4] - 4*tempData[i] + tempData[i+4] + tempData[i+step]);
+    //         // Lấy đạo hàm theo 2 chiều
+    //         var newValue = Math.abs(temp) + 50;//Math.sqrt(Math.abs(temp));
             
-            if(newValue > 255)
-                newValue = 255;
-            tempData[i] = newValue;
-            tempData[i+1] = newValue;
-            tempData[i+2] = newValue;
-        }
-    }
+    //         if(newValue > 255)
+    //             newValue = 255;
+    //         tempData[i] = newValue;
+    //         tempData[i+1] = newValue;
+    //         tempData[i+2] = newValue;
+    //     }
+    // }
 
-    return resultFrame;
+    // return resultFrame;
 }
