@@ -311,15 +311,21 @@ function laplace(orgFrame)
     // Duyệt qua từng pixel và gán bằng giá trị trung bình của các pixel xung quanh
     var width = orgFrame.width;
 
-    var length = tempData.length;
-    for(var i = 0; i < length - width; i++)
-    {
-        var temp = tempData[i-width] + tempData[i-4] - 4*tempData[i] + tempData[i+4] + tempData[i+width+4];
-        // Lấy đạo hàm theo 2 chiều
-        tempData[i] = Math.sqrt(Math.abs(temp));
-    }
+    // Duyệt qua từng pixel và gán bằng giá trị trung bình của các pixel xung quanh
+    var width = resultFrame.width;
+    var height = resultFrame.height;
 
-    resultFrame.data = tempData;
+    for(var r = 1; r < height - 1; r++)
+    {
+        for(c = 1; c < width - 1; c++)
+        {
+            var i = 4 * (r*width + c);
+
+            var temp = tempData[i-width] + tempData[i-4] - 4*tempData[i] + tempData[i+4] + tempData[i+width];
+            // Lấy đạo hàm theo 2 chiều
+            tempData[i] = Math.sqrt(Math.abs(temp));       
+        }
+    }
 
     return resultFrame;
 }
