@@ -270,7 +270,7 @@ function sobel(orgFrame)
         alert(temp1);
          //alert(temp2);
          //alert(temp);
-         temp1 = Math.sqrt(temp1);
+         temp1 = Math.sqrt(Math.abs(temp1));
          tempData[i] = temp1;
          tempData[i+1] = temp1;
          tempData[i+2] = temp1;
