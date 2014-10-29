@@ -144,33 +144,8 @@ function gaussBlur(frameData)
     return iData;
 }
 
-//Video controller-------------------------------------------------------------------------------------------------------------------
-//Play video
-function playVid()
-{
-    var v = document.getElementById('video');
-    var but = document.getElementById('playBut');
-    if (v.paused)
-    {
-        v.play();
-        but.textContent = 'PAUSE';
-    }
-    else
-    {
-        v.pause();
-        but.textContent = 'PLAY';
-    }
-}
-
-//Pause video
-function replayVid()
-{
-    var v = document.getElementById('video');
-    v.currentTime = 0;
-}
-
 //Change filter
-function changeFilter()
+function nextFilter()
 {
     var fTxt = document.getElementById('filterText');
     
