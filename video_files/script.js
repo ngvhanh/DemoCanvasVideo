@@ -67,11 +67,35 @@ function draw(video, context, width, height, filterType)
     setTimeout(draw, 40, video, context, width, height, filter); 
 }
 
-//Video processing-------------------------------------------------------------------------------------------------------------------
-//Convolute with kernel 3x3
+// ---------------- CÁC HÀM XỬ LÝ VIDEO THEO CÁC BỘ LỌC --------------
+
+
+// Chuyển frame đầu vào thành màu xám
+function grayscale(orgFrame)
+{
+    var resultFrame = orgFrame;
+    var pData = resultFrame.data;
+    
+    //Acess all pixels and grayscale them
+    var length = pData.length;
+    for (var i=0; i<length; i+=4)
+    {                    
+        var gray = pData[i]*0.3 + pData[i+1]*0.59 + pData[i+2]*0.11;
+        pData[i] = gray;
+        pData[i+1] = gray;
+        pData[i+2] = gray;
+    }
+    
+    resultFrame.data = pData;
+    orgFrame = resultFrame;
+    //return resultFrame;
+}
+
+
+// Hàm thực hiện tính tích chập với các kernal
 function convolute(iData, kernel, delta)
 {
-    var w = iData.width;    
+    var w = iData.width;
     var pData = iData.data;
     var rData = iData.data;
     var length = pData.length;
@@ -119,26 +143,6 @@ function gaussBlur(frameData)
     
     convolute(iData, kernel, 0);
     
-    return iData;
-}
-
-//Grayscale
-function grayscale(frameData)
-{
-    var iData = frameData;
-    var pData = iData.data;
-    
-    //Acess all pixels and grayscale them
-    var length = pData.length;
-    for (var i=0; i<length; i+=4)
-    {                    
-        var gray = pData[i]*0.3 + pData[i+1]*0.59 + pData[i+2]*0.11;
-        pData[i] = gray;
-        pData[i+1] = gray;
-        pData[i+2] = gray;
-    }
-    
-    iData.data = pData;
     return iData;
 }
 
