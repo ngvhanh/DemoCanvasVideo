@@ -252,31 +252,29 @@ function sobel(orgFrame)
     var width = orgFrame.width;
     var height = orgFrame.height;
 
-    var length = tempData.length;
-    for (var i = width*4 + 4; i < length - 4; i += 4)
+    for(var r = 1; r < width - 1; r++)
     {
-        var prvLine = i - 4 * width;
-        var nxtLine = i + 4 * width;                    
-        // Tính đạo hàm theo chiều ngang
-         var temp1 = (tempData[prvLine-4] + 2*tempData[prvLine] + tempData[prvLine+4]
+        for(c = 1; c < height - 1; c++)
+        {
+            var index = 4 * (x + y*width);
+            var prvLine = index - 4 * width;
+            var nxtLine = index + 4 * width;
+            var temp1 = (tempData[prvLine-4] + 2*tempData[prvLine] + tempData[prvLine+4]
                      - tempData[nxtLine-4] - 2*tempData[nxtLine] - tempData[nxtLine+4]) / 6;
-         // Tính đạo hàm theo chiều dọc
-         var temp2 = (tempData[prvLine-4] -  tempData[prvLine+4]
-                     + 2*tempData[i-4] - 2*tempData[i+4]
-                     + tempData[nxtLine-4] - tempData[nxtLine+4]) / 6;
-         // Lấy đạo hàm theo 2 chiều
-         var temp =  Math.sqrt(Math.pow(temp1, 2) + Math.pow(temp2, 2));
-         if(temp > 255)
-            temp = 255;
-        //alert(temp1);
-         //alert(temp2);
-         //alert(temp);
-         //alert(temp);
-         tempData[i] = temp;
-         tempData[i+1] = temp;
-         tempData[i+2] = temp;
+             // Tính đạo hàm theo chiều dọc
+             var temp2 = (tempData[prvLine-4] -  tempData[prvLine+4]
+                         + 2*tempData[i-4] - 2*tempData[i+4]
+                         + tempData[nxtLine-4] - tempData[nxtLine+4]) / 6;
+             // Lấy đạo hàm theo 2 chiều
+             var temp =  Math.sqrt(Math.pow(temp1, 2) + Math.pow(temp2, 2));
+             if(temp > 255)
+                temp = 255;
+             tempData[i] = temp;
+             tempData[i+1] = temp;
+             tempData[i+2] = temp;
 
-         tempData[i+3] = 255;
+             tempData[i+3] = 255; 
+        }
     }
 
 
