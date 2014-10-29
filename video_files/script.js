@@ -257,7 +257,7 @@ function sobel(orgFrame)
     var nxtLine = 2*width*4;
 
     var length = tempData.length;
-    for(var i = width; i < length - width; i++)
+    for(var i = width*4; i < length - width; i++)
     {
         // Tính đạo hàm theo chiều ngang
         var temp1 = (tempData[prvLine-4] + 2*tempData[prvLine] + tempData[prvLine+4]
@@ -270,8 +270,8 @@ function sobel(orgFrame)
         tempData[i] = Math.sqrt(Math.pow(temp1, 2) + Math.pow(temp2, 2));
 
         // cập nhật vị trí dòng liền trước và dòng liền sau cho bước tiếp theo
-        prvLine = i;
-        nxtLine = nxtLine + width;
+        prvLine++;
+        nxtLine++;
     }
 
     resultFrame.data = tempData;
@@ -294,7 +294,7 @@ function prewitt(orgFrame)
     var nxtLine = 2*width*4;
 
     var length = tempData.length;
-    for(var i = width; i < length - width; i++)
+    for(var i = width*4; i < length - width; i++)
     {
         // Tính đạo hàm theo chiều ngang
         var temp1 = (tempData[prvLine-4] + tempData[prvLine] + tempData[prvLine+4]
@@ -326,7 +326,7 @@ function laplace(orgFrame)
     var width = orgFrame.width;
 
     var length = tempData.length;
-    for(var i = width; i < length - width; i++)
+    for(var i = width*4; i < length - width; i++)
     {
         var temp = tempData[i-width] + tempData[i-4] - 4*tempData[i] + tempData[i+4] + tempData[i+width+4];
         // Lấy đạo hàm theo 2 chiều
